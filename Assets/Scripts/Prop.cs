@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Prop : MonoBehaviour
 {
-    public int scroe = 5;
+    public int score = 5;
     public ParticleSystem explosionParticle;
 
     public float hp = 10f;
@@ -18,8 +18,9 @@ public class Prop : MonoBehaviour
             ParticleSystem instance = Instantiate(explosionParticle,  transform.position, transform.rotation);
 
             AudioSource explosionAudio = instance.GetComponent<AudioSource>();
-            explosionAudio.Play(); 
+            explosionAudio.Play();
 
+            GameManager.instance.AddScore(score);
 
             Destroy(instance.gameObject, instance.duration);
             gameObject.SetActive(false);
